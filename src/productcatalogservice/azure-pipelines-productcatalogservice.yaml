@@ -28,7 +28,7 @@ stages:
           containerRegistry: 'Google Container Registry'
           repository: $(DockerImageName)
           command: 'buildAndPush'
-          Dockerfile: './src/prouctcatalogservice/Dockerfile'
+          Dockerfile: './src/productcatalogservice/Dockerfile'
           tags: |
             $(Build.BuildId)
             latest
