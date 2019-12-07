@@ -37,3 +37,16 @@ stages:
           tags: |
             $(Build.BuildId)
             latest
+
+      - task: CmdLine@1
+        displayName: 'Lock image version in deployment.yaml'
+        inputs:
+          filename: /bin/bash
+          workingFolder: ./src/emailservice/
+          arguments: '-c "awk ''{gsub(\"EMAILSERVICE_IMAGE\", \"eu.gcr.io/$(DockerImageName):$(Build.BuildId)\", $0); print}'' emailservice.yaml > $(build.artifactstagingdirectory)/emailservice.yaml"'
+
+      - task: PublishBuildArtifacts@1
+        inputs:
+          PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+          ArtifactName: 'AdserviceDeployment'
+          publishLocation: 'Container'
