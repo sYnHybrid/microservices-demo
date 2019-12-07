@@ -1,0 +1,34 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- master
+
+resources:
+- repo: self
+
+variables:
+  tag: '$(Build.BuildId)'
+  DockerImageName: 'sit-sandbox7-sb/microservices-demo/paymentservice'
+
+stages:
+- stage: Build
+  displayName: Build image
+  jobs:
+  - job: Build
+    displayName: Build
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps:
+
+      - task: Docker@2
+        inputs:
+          containerRegistry: 'Google Container Registry'
+          repository: $(DockerImageName)
+          command: 'buildAndPush'
+          Dockerfile: './src/paymentservice/Dockerfile'
+          tags: |
+            $(Build.BuildId)
+            latest
