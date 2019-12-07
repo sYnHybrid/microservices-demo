@@ -37,3 +37,15 @@ stages:
           tags: |
             $(Build.BuildId)
             latest
+      - task: CmdLine@1
+        displayName: 'Lock image version in shippingservice.yaml'
+        inputs:
+          filename: /bin/bash
+          workingFolder: ./src/shippingservice/
+          arguments: '-c "awk ''{gsub(\"SHIPPINGSERVICE_IMAGE\", \"eu.gcr.io/$(DockerImageName):$(Build.BuildId)\", $0); print}'' shippingservice.yaml > $(build.artifactstagingdirectory)/shippingservice.yaml"'
+
+      - task: PublishBuildArtifacts@1
+        inputs:
+          PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+          ArtifactName: 'DeploymentShippingservice'
+          publishLocation: 'Container'
