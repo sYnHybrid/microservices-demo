@@ -39,14 +39,14 @@ stages:
             latest
 
       - task: CmdLine@1
-        displayName: 'Lock image version in deployment.yaml'
+        displayName: 'Lock image version in paymentservice.yaml'
         inputs:
           filename: /bin/bash
           workingFolder: ./src/paymentservice/
-          arguments: '-c "awk ''{gsub(\"PAYMENTSERVICE_image\", \"eu.gcr.io/$(DockerImageName):$(Build.BuildId)\", $0); print}'' paymentservice.yaml > $(build.artifactstagingdirectory)/paymentservice.yaml"'
+          arguments: '-c "awk ''{gsub(\"PAYMENTSERVICE_IAMGE\", \"eu.gcr.io/$(DockerImageName):$(Build.BuildId)\", $0); print}'' paymentservice.yaml > $(build.artifactstagingdirectory)/paymentservice.yaml"'
 
       - task: PublishBuildArtifacts@1
         inputs:
           PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-          ArtifactName: 'AdserviceDeployment'
+          ArtifactName: 'PaymentserviceDeployment'
           publishLocation: 'Container'

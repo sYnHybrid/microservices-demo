@@ -39,7 +39,7 @@ stages:
             latest
 
       - task: CmdLine@1
-        displayName: 'Lock image version in deployment.yaml'
+        displayName: 'Lock image version in emailservice.yaml'
         inputs:
           filename: /bin/bash
           workingFolder: ./src/emailservice/
@@ -48,5 +48,5 @@ stages:
       - task: PublishBuildArtifacts@1
         inputs:
           PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-          ArtifactName: 'AdserviceDeployment'
+          ArtifactName: 'EmailserviceDeployment'
           publishLocation: 'Container'

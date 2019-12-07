@@ -37,3 +37,16 @@ stages:
           tags: |
             $(Build.BuildId)
             latest
+
+      - task: CmdLine@1
+        displayName: 'Lock image version in productcatalogservice.yaml'
+        inputs:
+          filename: /bin/bash
+          workingFolder: ./src/productcatalogservice/
+          arguments: '-c "awk ''{gsub(\"PRODUCTCATALOGSERVICE_IMAGE\", \"eu.gcr.io/$(DockerImageName):$(Build.BuildId)\", $0); print}'' productcatalogservice.yaml > $(build.artifactstagingdirectory)/productcatalogservice.yaml"'
+
+      - task: PublishBuildArtifacts@1
+        inputs:
+          PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+          ArtifactName: 'ProductcatalogserviceDeployment'
+          publishLocation: 'Container'

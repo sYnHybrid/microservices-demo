@@ -39,14 +39,14 @@ stages:
             latest
 
       - task: CmdLine@1
-        displayName: 'Lock image version in deployment.yaml'
+        displayName: 'Lock image version in currencyservice.yaml'
         inputs:
           filename: /bin/bash
-          workingFolder: ./src/currencervice/
-          arguments: '-c "awk ''{gsub(\"CURRENCERVICE_IMAGE\", \"eu.gcr.io/$(DockerImageName):$(Build.BuildId)\", $0); print}'' currencervice.yaml > $(build.artifactstagingdirectory)/currencervice.yaml"'
+          workingFolder: ./src/currencyservice/
+          arguments: '-c "awk ''{gsub(\"CURRENCYSERVICE_IMAGE\", \"eu.gcr.io/$(DockerImageName):$(Build.BuildId)\", $0); print}'' currencyservice.yaml > $(build.artifactstagingdirectory)/currencyservice.yaml"'
 
       - task: PublishBuildArtifacts@1
         inputs:
           PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-          ArtifactName: 'AdserviceDeployment'
+          ArtifactName: 'CurrencyserviceDeployment'
           publishLocation: 'Container'

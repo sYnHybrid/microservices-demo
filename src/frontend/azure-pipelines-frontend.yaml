@@ -39,7 +39,7 @@ stages:
             latest
 
       - task: CmdLine@1
-        displayName: 'Lock image version in deployment.yaml'
+        displayName: 'Lock image version in frontend.yaml'
         inputs:
           filename: /bin/bash
           workingFolder: ./src/frontend/

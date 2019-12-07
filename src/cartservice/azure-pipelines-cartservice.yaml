@@ -38,7 +38,7 @@ stages:
             $(Build.BuildId)
             latest
       - task: CmdLine@1
-        displayName: 'Lock image version in Cartservice.yaml'
+        displayName: 'Lock image version in cartservice.yaml'
         inputs:
           filename: /bin/bash
           workingFolder: ./src/cartservice/
@@ -47,5 +47,5 @@ stages:
       - task: PublishBuildArtifacts@1
         inputs:
           PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-          ArtifactName: 'Deployment Cartservice'
+          ArtifactName: 'CartserviceDeployment'
           publishLocation: 'Container'
