@@ -43,7 +43,7 @@ stages:
         inputs:
           filename: /bin/bash
           workingFolder: ./src/paymentservice/
-          arguments: '-c "awk ''{gsub(\"PAYMENTSERVICE\", \"eu.gcr.io/$(DockerImageName):$(Build.BuildId)\", $0); print}'' paymentservice.yaml > $(build.artifactstagingdirectory)/paymentservice.yaml"'
+          arguments: '-c "awk ''{gsub(\"PAYMENTSERVICE_image\", \"eu.gcr.io/$(DockerImageName):$(Build.BuildId)\", $0); print}'' paymentservice.yaml > $(build.artifactstagingdirectory)/paymentservice.yaml"'
 
       - task: PublishBuildArtifacts@1
         inputs:
