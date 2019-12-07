@@ -4,14 +4,19 @@
 # https://aka.ms/yaml
 
 trigger:
-- master
+  branches:
+    include:
+      - master
+  paths:
+    include:
+      - src/productcatalogservice/*
 
 resources:
 - repo: self
 
 variables:
   tag: '$(Build.BuildId)'
-  DockerImageName: 'sit-sandbox7-sb/microservices-demo/prouctcatalogservice'
+  DockerImageName: 'sit-sandbox7-sb/microservices-demo/productcatalogservice'
 
 stages:
 - stage: Build
