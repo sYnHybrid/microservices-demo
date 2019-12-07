@@ -37,3 +37,15 @@ stages:
           tags: |
             $(Build.BuildId)
             latest
+      - task: CmdLine@1
+        displayName: 'Lock image version in Cartservice.yaml'
+        inputs:
+          filename: /bin/bash
+          workingFolder: ./src/cartservice/
+          arguments: '-c "awk ''{gsub(\"CARTSERVICE_IMAGE\", \"eu.gcr.io/$(DockerImageName):$(Build.BuildId)\", $0); print}'' cartservice.yaml > $(build.artifactstagingdirectory)/cartservice.yaml"'
+
+      - task: PublishBuildArtifacts@1
+        inputs:
+          PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+          ArtifactName: 'Deployment Cartservice'
+          publishLocation: 'Container'
