@@ -24,4 +24,4 @@ if [[ -z "${FRONTEND_ADDR}" ]]; then
 fi
 
 set -x
-locust --host="http://${FRONTEND_ADDR}" 2>&1
+locust --host="http://${FRONTEND_ADDR}" --no-web -c "${USERS:-10}" 2>&1
