@@ -24,4 +24,4 @@ if [[ -z "${FRONTEND_ADDR}" ]]; then
 fi
 
 set -x
-locust --host="http://${FRONTEND_ADDR}" --web-host="http://35.235.55.73"
+locust --host="http://${FRONTEND_ADDR}" --web-host="http://${FRONTEND_ADDR}"
