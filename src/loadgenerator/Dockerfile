@@ -14,5 +14,6 @@ FROM base
 COPY --from=builder /install /usr/local
 
 COPY . .
+EXPOSE 8089
 RUN chmod +x ./loadgen.sh
 ENTRYPOINT ./loadgen.sh
