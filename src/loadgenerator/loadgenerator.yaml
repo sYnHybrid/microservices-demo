@@ -47,6 +47,20 @@ spec:
           value: "frontend:80"
         - name: USERS
           value: "10"
+        ports:
+        - name: loc-master-web
+          containerPort: 8089
+          protocol: TCP
+        livenessProbe:
+          periodSeconds: 30
+          httpGet:
+            path: /
+            port: 8089
+        readinessProbe:
+          periodSeconds: 30
+          httpGet:
+            path: /
+            port: 8089
         resources:
           requests:
             cpu: 300m
@@ -54,3 +68,19 @@ spec:
           limits:
             cpu: 500m
             memory: 512Mi
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: loadgen-locust-web
+  labels:
+    app: locust
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 8089
+      targetPort: 8089
+      protocol: TCP
+      name: loadgen-locust-web
+  selector:
+    app: locust
