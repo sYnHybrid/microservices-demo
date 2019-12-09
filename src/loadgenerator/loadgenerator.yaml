@@ -48,19 +48,8 @@ spec:
         - name: USERS
           value: "10"
         ports:
-        - name: loc-master-web
-          containerPort: 8089
+        - containerPort: 8089
           protocol: TCP
-        livenessProbe:
-          periodSeconds: 30
-          httpGet:
-            path: /
-            port: 8089
-        readinessProbe:
-          periodSeconds: 30
-          httpGet:
-            path: /
-            port: 8089
         resources:
           requests:
             cpu: 300m
@@ -69,10 +58,23 @@ spec:
             cpu: 500m
             memory: 512Mi
 ---
+apiVersion: v1
+kind: Service
+metadata:
+  name: loadgenerator
+spec:
+  type: ClusterIP
+  selector:
+    app: loadgenerator
+  ports:
+  - name: http
+    port: 8089
+    targetPort: 8089
+---
 kind: Service
 apiVersion: v1
 metadata:
-  name: loadgenerator
+  name: loadgenerator-external
   labels:
     app: loadgenerator
 spec:
@@ -81,6 +83,6 @@ spec:
     - port: 8089
       targetPort: 8089
       protocol: TCP
-      name: loadgenerator
+      name: loadgenerator-external
   selector:
     app: loadgenerator
