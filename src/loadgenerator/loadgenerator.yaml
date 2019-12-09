@@ -68,7 +68,7 @@ spec:
     app: loadgenerator
   ports:
   - name: http
-    port: 8089
+    port: 80
     targetPort: 8089
 ---
 kind: Service
@@ -80,7 +80,7 @@ metadata:
 spec:
   type: LoadBalancer
   ports:
-    - port: 8089
+    - port: 80
       targetPort: 8089
       protocol: TCP
       name: loadgenerator-external
