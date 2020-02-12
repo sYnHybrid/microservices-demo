@@ -116,6 +116,28 @@
         "units": 179
       },
       "categories": ["cookware"]
+    },
+    {
+      "id": "PKS8ZM51XO",
+      "name": "Retro Gewächshaus",
+      "description": "Perfektes Gewächshaus für deine Air Plant.",
+      "picture": "/static/img/products/retro-gewaechshaus.jpg",
+      "priceUsd": {
+        "currencyCode": "USD",
+        "units": 45
+      },
+      "categories": ["gardening"]
+    },
+    {
+      "id": "PKS8ZM51XO",
+      "name": "Retro Pyjama",
+      "description": "Umweltfreundlicher Pyjama aus Bio-Baumwolle",
+      "picture": "/static/img/products/pyjama.jpg",
+      "priceUsd": {
+        "currencyCode": "USD",
+        "units": 10
+      },
+      "categories": ["fashion"]
     }
   ]
 }
