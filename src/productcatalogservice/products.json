@@ -1,6 +1,39 @@
 {
   "products": [
     {
+      "id": "QJK8YME1KO",
+      "name": "Amica Retro Kühlschrank",
+      "description": "Mit dem stylischen Retro-Kühlschrank KS15610-16 von Amica, wird deine Küche in altmodischem Design glänzen.",
+      "picture": "/static/img/products/amica-retro-kuehlschrank.jpg",
+      "priceUsd": {
+        "currencyCode": "USD",
+        "units": 179
+      },
+      "categories": ["cookware"]
+    },
+    {
+      "id": "PKS8ZM51XO",
+      "name": "Retro Gewächshaus",
+      "description": "Perfektes Gewächshaus für deine Air Plant.",
+      "picture": "/static/img/products/retro-gewaechshaus.jpg",
+      "priceUsd": {
+        "currencyCode": "USD",
+        "units": 45
+      },
+      "categories": ["gardening"]
+    },
+    {
+      "id": "PKS8ZM51XO",
+      "name": "Pyjama",
+      "description": "Umweltfreundlicher Pyjama aus Bio-Baumwolle",
+      "picture": "/static/img/products/pyjama.jpg",
+      "priceUsd": {
+        "currencyCode": "USD",
+        "units": 10
+      },
+      "categories": ["fashion"]
+    },
+    {
       "id": "OLJCESPC7Z",
       "name": "Vintage Typewriter",
       "description": "This typewriter looks good in your living room.",
